@@ -1,6 +1,6 @@
 {
   "name": "pfeed",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "description": "Feed is a RSS 2.0, Atom 1.0 and Json Feed 1.0 generator for Node.js, based on work from Jean-Philippe Monette and initiated by a need of the PeerTube project",
   "homepage": "http://github.com/rigelk/feed",
   "author": "Rigel Kent <sendmemail@rigelk.eu>",
@@ -51,12 +51,13 @@
     "xml": "^1.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.5.1",
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
+    "@babel/preset-env": "^7.13.10",
     "codeclimate-test-reporter": "^0.5.0",
     "coveralls": "^3.0.0",
-    "jest": "^22.4.3"
+    "jest": "^26.6.3"
   },
   "engines": {
     "node": ">=0.4.0"
