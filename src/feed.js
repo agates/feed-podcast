@@ -784,6 +784,239 @@ class Feed {
     return JSON.stringify(feed, null, 4)
   }
 
+  podcast() {
+    const { options } = this
+
+    let channel = [
+      { title: options.title },
+      { link: options.link },
+      { description: options.description },
+      {
+        lastBuildDate: options.updated
+          ? options.updated.toUTCString()
+          : new Date().toUTCString()
+      },
+      { docs: "http://blogs.law.harvard.edu/tech/rss" },
+      { generator: options.generator || GENERATOR }
+    ]
+
+    let rss = [{ _attr: { version: "2.0" } }, { channel }]
+
+    rss[0]._attr["xmlns:itunes"] = "http://www.itunes.com/dtds/podcast-1.0.dtd"
+    rss[0]._attr["xmlns:podcast"] = "https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md"
+
+    let root = [{ rss }]
+
+    if (options.author) {
+      channel.push({
+        "podcast:person": [
+          { _attr: pick(options.author, ["role", "group", "href", "img"]) },
+          options.author.name
+        ]
+      })
+      channel.push({
+        "itunes:author": options.author.name
+      })
+    }
+
+    channel.push({
+      "itunes:explicit": options.explicit ? "yes" : "no"
+    })
+
+    /**
+     * Channel Image
+     * http://cyber.law.harvard.edu/rss/rss.html#ltimagegtSubelementOfLtchannelgt
+     */
+    if (options.image) {
+      channel.push({
+        image: [
+          { title: options.title },
+          { url: options.image },
+          { link: options.link }
+        ]
+      })
+      channel.push({
+        "itunes:image": options.image
+      })
+    }
+
+    /**
+     * Channel Copyright
+     * http://cyber.law.harvard.edu/rss/rss.html#optionalChannelElements
+     */
+    if (options.copyright) {
+      channel.push({ copyright: options.copyright })
+    }
+
+    /**
+     * Channel Categories
+     * http://cyber.law.harvard.edu/rss/rss.html#comments
+     */
+    this.categories.forEach(category => {
+      channel.push({ category })
+    })
+    this.categories.forEach(category => {
+      channel.push({
+        "itunes:category": { _attr: { text: category } }
+      })
+    })
+
+    /**
+     * Channel Categories
+     * http://cyber.law.harvard.edu/rss/rss.html#hrelementsOfLtitemgt
+     */
+    this.items.forEach(entry => {
+      let item = []
+
+      // Handle custom fields
+      this.custom_fields.forEach(field_name => {
+        if (entry[field_name]) {
+          item.push({ [field_name]: entry[field_name] })
+        }
+      })
+
+      if (entry.title) {
+        item.push({ title: { _cdata: entry.title } })
+      }
+
+      if (entry.link) {
+        item.push({ link: entry.link })
+      }
+
+      if (entry.guid) {
+        if (entry.guid.indexOf("http") === -1) {
+          item.push({
+            guid: { _cdata: entry.guid, _attr: { isPermaLink: "false" } }
+          })
+        } else {
+          item.push({ guid: entry.guid })
+        }
+      } else if (entry.link) {
+        item.push({ guid: entry.link })
+      }
+
+      if (entry.date) {
+        item.push({ pubDate: entry.date.toUTCString() })
+      }
+
+      if (entry.description) {
+        item.push({ description: { _cdata: entry.description } })
+      }
+
+      if (entry.content) {
+        isContent = true
+        item.push({ "content:encoded": { _cdata: entry.content } })
+      }
+      /**
+       * Item Author
+       * http://cyber.law.harvard.edu/rss/rss.html#ltauthorgtSubelementOfLtitemgt
+       */
+      if (Array.isArray(entry.author)) {
+        entry.author.some(author => {
+          if (author.name) {
+            if (author.email) {
+              item.push({ author: author.email + " (" + author.name + ")" })
+            }
+            rss[0]._attr["xmlns:dc"] = "http://purl.org/dc/elements/1.1/"
+            item.push({ "dc:creator": author.name })
+            return true
+          }
+          return false
+        })
+        entry.author.forEach(author => {
+          item.push({
+            "podcast:person": [
+              { _attr: pick(author, ["role", "group", "href", "img"]) },
+              author.name
+            ]
+          })
+        })
+      }
+
+      const podcastItem = (el, target, isItem = true) => {
+
+        if (el.subTitle) {
+          el.subTitle.forEach(i => {
+            if (!has(i, "url") || !has(i, "type") || !has(i, "language")) return
+
+            target.push({
+              "podcast:transcript": [{
+                  _attr: pick(i, ["url", "type", "language", "rel"])
+                }]
+            })
+          })
+        }
+
+        el.media.forEach((m, index) => {
+          if (!has(m, "type") || !has(m, "sources")
+            || !Array.isArray(m.sources) || m.sources.length <= 0) return
+          if (index === 0) {
+            m["default"] = true
+
+            target.push({
+              enclosure: [{
+                  _attr: {
+                    type: m.type,
+                    length: m.length,
+                    url: m.sources[0].uri
+                  }
+                }]
+            })
+          }
+          const alternateEnclosure = [{
+              _attr: pick(m, ["type", "codecs", "length", "bitrate", "title", "language", "rel", "default"])
+            }]
+          m.sources.forEach(s => {
+            if (!has(s, "uri")) return
+            alternateEnclosure.push({
+              "podcast:source": [{ _attr: pick(s, ["uri", "contentType"])}]
+            })
+          })
+          if (has(m, "integrity")) {
+            m.integrity.forEach(i => {
+              if (!has(i, "type") || !has(i, "value")) return
+              const type = i["type"]
+              let value = i["value"]
+              if (i["type"] === "sri") {
+                if (!has(i, "name")) return
+                value = `${i["name"]}-${i["value"]}`
+              }
+
+              alternateEnclosure.push({
+                "podcast:integrity": [{ _attr: {type, value}}]
+              })
+            })
+          }
+          target.push({ "podcast:alternateEnclosure": alternateEnclosure })
+        })
+      }
+
+      podcastItem(entry, item)
+
+      if (has(entry, "thumbnail")
+          && Array.isArray(entry.thumbnail) && entry.thumbnail.length > 0
+          && has(entry.thumbnail[0], "url")) {
+        item.push({ "itunes:image": entry.thumbnail[0].url })
+      }
+      item.push({ "itunes:explicit": entry.explicit ? "yes" : "no" })
+
+      channel.push({ item })
+    })
+
+    /**
+     * Sort properties to provide reproducible results for strict implementations
+     */
+    function sortObject(o) {
+      return Object.keys(o)
+        .sort()
+        .reduce((r, k) => ((r[k] = o[k]), r), {})
+    }
+    if (rss[0]._attr) rss[0]._attr = sortObject(rss[0]._attr)
+
+    return DOCTYPE + xml(root, true)
+  }
+
+
   ISODateString(d) {
     function pad(n) {
       return n < 10 ? "0" + n : n
