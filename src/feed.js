@@ -786,6 +786,7 @@ class Feed {
 
   podcast() {
     const { options } = this
+    let isContent = false
 
     let channel = [
       { title: options.title },
@@ -1002,6 +1003,10 @@ class Feed {
 
       channel.push({ item })
     })
+
+    if (isContent) {
+      rss[0]._attr["xmlns:content"] = "http://purl.org/rss/1.0/modules/content/"
+    }
 
     /**
      * Sort properties to provide reproducible results for strict implementations
