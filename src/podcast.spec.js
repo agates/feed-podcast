@@ -76,6 +76,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
         bitrate: 500000,
         title: 'Video - vp9',
         language: "en-us",
+        height: 720,
         sources: [
           { uri: 'https://example.com/hello-world.vp9' },
           { uri: 'https://example.com/hello-world-vp9-ogg.torrent', contentType: 'application/x-bittorrent' }
@@ -151,7 +152,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             </podcast:transcript>
             <enclosure type="video/webm" length="12345" url="https://example.com/hello-world.vp8">
             </enclosure>
-            <podcast:alternateEnclosure type="video/webm" codecs="vp8" length="12345" bitrate="400000" title="Video - vp8" language="en-us" default="true">
+            <podcast:alternateEnclosure type="video/webm" codecs="vp8" length="12345" bitrate="400000" language="en-us" default="true">
                 <podcast:source uri="https://example.com/hello-world.vp8">
                 </podcast:source>
                 <podcast:source uri="https://example.com/hello-world-vp8-ogg.torrent" contentType="application/x-bittorrent">
@@ -161,7 +162,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
                 <podcast:integrity type="pgp-signature" value="0001pgp">
                 </podcast:integrity>
             </podcast:alternateEnclosure>
-            <podcast:alternateEnclosure type="video/webm" codecs="vp9" length="54321" bitrate="500000" title="Video - vp9" language="en-us">
+            <podcast:alternateEnclosure type="video/webm" codecs="vp9" length="54321" bitrate="500000" height="720" language="en-us">
                 <podcast:source uri="https://example.com/hello-world.vp9">
                 </podcast:source>
                 <podcast:source uri="https://example.com/hello-world-vp9-ogg.torrent" contentType="application/x-bittorrent">
