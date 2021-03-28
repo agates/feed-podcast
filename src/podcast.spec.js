@@ -132,7 +132,8 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             <url>http://example.com/image.png</url>
             <link>http://example.com/</link>
         </image>
-        <itunes:image>http://example.com/image.png</itunes:image>
+        <itunes:image href="http://example.com/image.png">
+        </itunes:image>
         <copyright>All rights reserved 2013, John Doe</copyright>
         <category>Technology</category>
         <itunes:category text="Technology"/>
@@ -170,7 +171,8 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
                 <podcast:integrity type="pgp-signature" value="0002pgp">
                 </podcast:integrity>
             </podcast:alternateEnclosure>
-            <itunes:image>https://example.com/hello-world.png</itunes:image>
+            <itunes:image href="https://example.com/hello-world.png">
+            </itunes:image>
             <itunes:explicit>yes</itunes:explicit>
         </item>
     </channel>

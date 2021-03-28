@@ -837,7 +837,9 @@ class Feed {
         ]
       })
       channel.push({
-        "itunes:image": options.image
+        "itunes:image": [
+          { _attr: {"href": options.image} }
+        ]
       })
     }
 
@@ -997,7 +999,11 @@ class Feed {
       if (has(entry, "thumbnail")
           && Array.isArray(entry.thumbnail) && entry.thumbnail.length > 0
           && has(entry.thumbnail[0], "url")) {
-        item.push({ "itunes:image": entry.thumbnail[0].url })
+        item.push({
+          "itunes:image": [
+            { _attr: {"href": entry.thumbnail[0].url} }
+          ]
+        })
       }
       item.push({ "itunes:explicit": entry.explicit ? "yes" : "no" })
 
