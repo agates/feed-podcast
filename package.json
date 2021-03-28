@@ -1,6 +1,6 @@
 {
   "name": "pfeed-podcast",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Feed is a Podcast, RSS 2.0, Atom 1.0 and Json Feed 1.0 generator for Node.js, based on work from Jean-Philippe Monette and initiated by a need of the PeerTube project",
   "homepage": "http://github.com/agates/feed",
   "author": "Alecks Gates <agates@mail.agates.io",
