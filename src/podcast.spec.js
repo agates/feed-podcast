@@ -16,6 +16,18 @@ let feed = new Feed({
     name: 'John Doe',
     email: 'johndoe@example.com',
     link: 'https://example.com/johndoe'
+  },
+  managingEditor: {
+    name: 'John Doe',
+    email: 'johndoe@example.com',
+  },
+  webMaster: {
+    name: 'Jane Doe',
+    email: 'janedoe@example.com',
+  },
+  owner: {
+    name: 'John Doe',
+    email: 'johndoe@example.com',
   }
 })
 
@@ -127,6 +139,12 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
         <generator>awesome</generator>
         <podcast:person>John Doe</podcast:person>
         <itunes:author>John Doe</itunes:author>
+        <managingEditor>johndoe@example.com (John Doe)</managingEditor>
+        <webMaster>janedoe@example.com (Jane Doe)</webMaster>
+        <itunes:owner>
+            <itunes:email>johndoe@example.com</itunes:email>
+            <itunes:name>John Doe</itunes:name>
+        </itunes:owner>
         <itunes:explicit>no</itunes:explicit>
         <image>
             <title>Feed Title</title>
