@@ -1,16 +1,16 @@
-import * as convert from "xml-js";
-import { generator } from "./config";
-import { Feed } from "./feed";
-import { Author, Category, Enclosure, Item } from "./typings";
-import { sanitize } from "./utils";
+import * as convert from 'xml-js'
+import { generator } from './config'
+import { Feed } from './feed'
+import { Author, Category, Enclosure, Item } from './typings'
+import { sanitize } from './utils'
 
 /**
  * Returns a RSS 2.0 feed
  */
 export default (ins: Feed) => {
-  const { options } = ins;
-  let isAtom = false;
-  let isContent = false;
+  const { options } = ins
+  let isAtom = false
+  let isContent = false
 
   const base: any = {
     _declaration: { _attributes: { version: "1.0", encoding: "utf-8" } },
@@ -25,14 +25,14 @@ export default (ins: Feed) => {
         generator: { _text: options.generator || generator },
       },
     },
-  };
+  }
 
   /**
    * Channel language
    * https://validator.w3.org/feed/docs/rss2.html#ltlanguagegtSubelementOfLtchannelgt
    */
   if (options.language) {
-    base.rss.channel.language = { _text: options.language };
+    base.rss.channel.language = { _text: options.language }
   }
 
   /**
@@ -40,7 +40,7 @@ export default (ins: Feed) => {
    * https://validator.w3.org/feed/docs/rss2.html#ltttlgtSubelementOfLtchannelgt
    */
   if (options.ttl) {
-    base.rss.channel.ttl = { _text: options.ttl };
+    base.rss.channel.ttl = { _text: options.ttl }
   }
 
   /**
@@ -52,7 +52,7 @@ export default (ins: Feed) => {
       title: { _text: options.title },
       url: { _text: options.image },
       link: { _text: sanitize(options.link) }
-    };
+    }
   }
 
   /**
@@ -60,7 +60,7 @@ export default (ins: Feed) => {
    * https://validator.w3.org/feed/docs/rss2.html#optionalChannelElements
    */
   if (options.copyright) {
-    base.rss.channel.copyright = { _text: options.copyright };
+    base.rss.channel.copyright = { _text: options.copyright }
   }
 
   /**
@@ -69,18 +69,18 @@ export default (ins: Feed) => {
    */
   ins.categories.map((category) => {
     if (!base.rss.channel.category) {
-      base.rss.channel.category = [];
+      base.rss.channel.category = []
     }
-    base.rss.channel.category.push({ _text: category });
-  });
+    base.rss.channel.category.push({ _text: category })
+  })
 
   /**
    * Feed URL
    * http://validator.w3.org/feed/docs/warning/MissingAtomSelfLink.html
    */
-  const atomLink = options.feed || (options.feedLinks && options.feedLinks.rss);
+  const atomLink = options.feed || (options.feedLinks && options.feedLinks.rss)
   if (atomLink) {
-    isAtom = true;
+    isAtom = true
     base.rss.channel["atom:link"] = [
       {
         _attributes: {
@@ -89,7 +89,7 @@ export default (ins: Feed) => {
           type: "application/rss+xml",
         },
       },
-    ];
+    ]
   }
 
   /**
@@ -97,80 +97,78 @@ export default (ins: Feed) => {
    * https://code.google.com/p/pubsubhubbub/
    */
   if (options.hub) {
-    isAtom = true;
+    isAtom = true
     if (!base.rss.channel["atom:link"]) {
-      base.rss.channel["atom:link"] = [];
+      base.rss.channel["atom:link"] = []
     }
     base.rss.channel["atom:link"] = {
       _attributes: {
         href: sanitize(options.hub),
         rel: "hub"
       }
-    };
+    }
   }
 
   /**
    * Channel Categories
    * https://validator.w3.org/feed/docs/rss2.html#hrelementsOfLtitemgt
    */
-  base.rss.channel.item = [];
+  base.rss.channel.item = []
 
   ins.items.map((entry: Item) => {
-    let item: any = {};
+    let item: any = {}
 
     if (entry.title) {
-      item.title = { _cdata: entry.title };
+      item.title = { _cdata: entry.title }
     }
 
     if (entry.link) {
-      item.link = { _text: sanitize(entry.link) };
+      item.link = { _text: sanitize(entry.link) }
     }
 
     if (entry.guid) {
-      item.guid = { _text: entry.guid };
+      item.guid = { _text: entry.guid }
     } else if (entry.id) {
-      item.guid = { _text: entry.id };
+      item.guid = { _text: entry.id }
     } else if (entry.link) {
-      item.guid = { _text: sanitize(entry.link) };
+      item.guid = { _text: sanitize(entry.link) }
     }
 
     if (entry.date) {
-      item.pubDate = { _text: entry.date.toUTCString() };
-    }
-
-    if (entry.published) {
-      item.pubDate = { _text: entry.published.toUTCString() };
+      item.pubDate = { _text: entry.date.toUTCString() }
+    } else if (entry.published) {
+      item.pubDate = { _text: entry.published.toUTCString() }
     }
 
     if (entry.description) {
-      item.description = { _cdata: entry.description };
+      item.description = { _cdata: entry.description }
     }
 
     if (entry.content) {
-      isContent = true;
-      item["content:encoded"] = { _cdata: entry.content };
+      isContent = true
+      item["content:encoded"] = { _cdata: entry.content }
     }
     /**
      * Item Author
      * https://validator.w3.org/feed/docs/rss2.html#ltauthorgtSubelementOfLtitemgt
      */
     if (Array.isArray(entry.author)) {
-      item.author = [];
+      item.author = []
       entry.author.map((author: Author) => {
         if (author.email && author.name) {
-          item.author.push({ _text: author.email + " (" + author.name + ")" });
+          item.author.push({ _text: author.email + " (" + author.name + ")" })
         }
-      });
+      })
     }
     /**
      * Item Category
      * https://validator.w3.org/feed/docs/rss2.html#ltcategorygtSubelementOfLtitemgt
      */
     if (Array.isArray(entry.category)) {
-      item.category = [];
+      item.category = []
       entry.category.map((category: Category) => {
-        item.category.push(formatCategory(category));
-      });
+        item.category.push(formatCategory(category))
+      })
     }
 
     /**
@@ -178,34 +176,37 @@ export default (ins: Feed) => {
      * https://validator.w3.org/feed/docs/rss2.html#ltenclosuregtSubelementOfLtitemgt
      */
     if (entry.enclosure) {
-      item.enclosure = formatEnclosure(entry.enclosure);
+      item.enclosure = formatEnclosure(entry.enclosure)
     }
 
     if (entry.image) {
-      item.enclosure = formatEnclosure(entry.image, "image");
+      item.enclosure = formatEnclosure(entry.image, "image")
     }
 
     if (entry.audio) {
-      item.enclosure = formatEnclosure(entry.audio, "audio");
+      item.enclosure = formatEnclosure(entry.audio, "audio")
     }
 
     if (entry.video) {
-      item.enclosure = formatEnclosure(entry.video, "video");
+      item.enclosure = formatEnclosure(entry.video, "video")
     }
 
-    base.rss.channel.item.push(item);
-  });
+    processMRSS(base.rss._attributes, entry, item)
+
+    base.rss.channel.item.push(item)
+  })
 
   if (isContent) {
-    base.rss._attributes["xmlns:dc"] = "http://purl.org/dc/elements/1.1/";
-    base.rss._attributes["xmlns:content"] = "http://purl.org/rss/1.0/modules/content/";
+    base.rss._attributes["xmlns:dc"] = "http://purl.org/dc/elements/1.1/"
+    base.rss._attributes["xmlns:content"] = "http://purl.org/rss/1.0/modules/content/"
   }
 
   if (isAtom) {
-    base.rss._attributes["xmlns:atom"] = "http://www.w3.org/2005/Atom";
+    base.rss._attributes["xmlns:atom"] = "http://www.w3.org/2005/Atom"
   }
-  return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 });
-};
+
+  return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 })
+}
 
 /**
  * Returns a formated enclosure
@@ -214,24 +215,170 @@ export default (ins: Feed) => {
  */
 const formatEnclosure = (enclosure: string | Enclosure, mimeCategory = "image") => {
   if (typeof enclosure === "string") {
-    const type = new URL(enclosure).pathname.split(".").slice(-1)[0];
-    return { _attributes: { url: enclosure, length: 0, type: `${mimeCategory}/${type}` } };
+    const type = new URL(enclosure).pathname.split(".").slice(-1)[0]
+    return { _attributes: { url: enclosure, length: 0, type: `${mimeCategory}/${type}` } }
   }
 
-  const type = new URL(enclosure.url).pathname.split(".").slice(-1)[0];
-  return { _attributes: { length: 0, type: `${mimeCategory}/${type}`, ...enclosure } };
-};
+  const type = new URL(enclosure.url).pathname.split(".").slice(-1)[0]
+  return { _attributes: { length: 0, type: `${mimeCategory}/${type}`, ...enclosure } }
+}
 
 /**
  * Returns a formated category
  * @param category
  */
 const formatCategory = (category: Category) => {
-  const { name, domain } = category;
+  const { name, domain } = category
   return {
     _text: name,
     _attributes: {
       domain,
     },
-  };
-};
+  }
+}
+
+const processMRSS = (rssAttributes: { [name: string]: string }, entry: Item, target: { [id: string]: object }) => {
+  let hasMediaRSS = false
+
+  if (entry.categories) {
+    hasMediaRSS = true
+
+    target["media:category"] = entry.categories.map(c => ({
+      _text: c.value,
+      _attributes: {
+        scheme: "http://search.yahoo.com/mrss/category_schema",
+        label: c.label
+      }
+    }))
+  }
+
+  if (entry.community?.statistics?.views !== undefined) {
+    hasMediaRSS = true
+
+    target["media:community"] = {
+      "media:statistics": {
+        _attributes: {
+          views: entry.community.statistics.views
+        }
+      }
+    }
+  }
+
+  if (entry.embed) {
+    hasMediaRSS = true
+
+    target["media:embed"] = {
+      _attributes: {
+        url: entry.embed.url
+      }
+    }
+  }
+
+  if (entry.keywords) {
+    hasMediaRSS = true
+
+    target["media:keywords"] = {
+      _text: [entry.keywords.join(", ")]
+    }
+  }
+
+  if (entry.subTitle) {
+    for (const sub of entry.subTitle) {
+      if (!sub.href || !sub.type || !sub.lang) continue
+
+      hasMediaRSS = true
+
+      target["media:subTitle"] = {
+        _attributes: {
+          href: sub.href,
+          type: sub.type,
+          lang: sub.lang
+        }
+      }
+    }
+  }
+
+  if (entry.player) {
+    hasMediaRSS = true
+
+    target["media:player"] = {
+      _attributes: {
+        url: entry.player.url
+      }
+    }
+  }
+
+
+  const mediagroup: { [id: string]: object } = {}
+
+  if (Array.isArray(entry.torrents)) {
+    mediagroup["media:peerLink"] = entry.torrents.map((t, i) => ({
+      _attributes: {
+        type: "application/x-bittorrent",
+        href: t.url,
+
+        // Prefer defaulting obn videos
+        isDefault: (Array.isArray(entry.videos) === false || entry.videos?.length === 0) && i === 0
+          ? "true"
+          : "false"
+      }
+    }))
+  }
+
+  if (Array.isArray(entry.videos)) {
+    mediagroup["media:content"] = entry.videos.map((v, i) => ({
+      _attributes: {
+        type: v.type,
+        medium: v.medium,
+        height: v.height,
+        fileSize: v.fileSize,
+        url: v.url,
+        framerate: v.framerate,
+        duration: v.duration,
+        isDefault: i === 0
+          ? "true"
+          : "false"
+      }
+    }))
+  }
+
+  if (Object.keys(mediagroup).length !== 0) {
+    hasMediaRSS = true
+
+    target["media:group"] = mediagroup
+  }
+
+  if (entry.thumbnails) {
+    hasMediaRSS = true
+
+    target["media:thumbnail"] = entry.thumbnails.map(t => ({
+      _attributes: {
+        url: t.url,
+        height: t.height,
+        width: t.width
+      }
+    }))
+  }
+
+  if (hasMediaRSS) {
+    rssAttributes["xmlns:media"] = "http://search.yahoo.com/mrss/"
+
+    target["media:rating"] = {
+      _text: entry.nsfw ? "adult" : "nonadult"
+    }
+
+    if (entry.title) {
+      target["media:title"] = {
+        _text: entry.title,
+        _attributes: { type: "plain" }
+      }
+    }
+
+    if (entry.description) {
+      target["media:description"] = {
+        _text: entry.description,
+        _attributes: { type: "plain" }
+      }
+    }
+  }
+}
