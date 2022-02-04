@@ -313,7 +313,7 @@ describe("rss 2.0", () => {
     })
 
     let expected = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
-<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Feed Title</title>
         <link>http://example.com/</link>

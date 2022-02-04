@@ -136,7 +136,9 @@ export default (ins: Feed) => {
 
     if (entry.date) {
       item.pubDate = { _text: entry.date.toUTCString() }
-    } else if (entry.published) {
+    }
+
+    if (entry.published) {
       item.pubDate = { _text: entry.published.toUTCString() }
     }
 
@@ -157,6 +159,12 @@ export default (ins: Feed) => {
       entry.author.map((author: Author) => {
         if (author.email && author.name) {
           item.author.push({ _text: author.email + " (" + author.name + ")" })
+        } else if (author.name) {
+          base.rss._attributes["xmlns:dc"] = "http://purl.org/dc/elements/1.1/"
+
+          item["dc:creator"] = {
+            _text: author.name
+          }
         }
       })
     }
