@@ -1,9 +1,9 @@
 {
-  "name": "feed",
-  "version": "4.2.2",
-  "description": "Feed is a RSS, Atom and JSON feed generator for Node.js, making content syndication simple and intuitive!",
-  "homepage": "https://github.com/jpmonette/feed",
-  "author": "Jean-Philippe Monette <contact@jpmonette.net>",
+  "name": "@peertube/feed",
+  "version": "5.0.0",
+  "description": "Feed - PeerTube fork",
+  "homepage": "https://github.com/Chocobozzz/feed",
+  "author": "Chocobozzz",
   "license": "MIT",
   "main": "lib/feed.js",
   "types": "lib/feed.d.ts",
@@ -13,15 +13,6 @@
     "test": "export NODE_ENV=test && jest --silent",
     "test-travis": "export NODE_ENV=test && jest --coverage"
   },
-  "keywords": [
-    "rss",
-    "atom",
-    "feed",
-    "syndication",
-    "xml",
-    "wrapper",
-    "blog"
-  ],
   "dependencies": {
     "xml-js": "^1.6.11"
   },
@@ -40,10 +31,10 @@
     "node": ">=0.4.0"
   },
   "bugs": {
-    "url": "https://github.com/jpmonette/feed/issues"
+    "url": "https://github.com/Chocobozzz/feed/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpmonette/feed.git"
+    "url": "https://github.com/Chocobozzz/feed.git"
   }
 }
