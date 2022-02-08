@@ -255,7 +255,7 @@ const processMRSS = (rssAttributes: { [name: string]: string }, entry: Item, tar
       _text: c.value,
       _attributes: {
         scheme: "http://search.yahoo.com/mrss/category_schema",
-        label: c.label
+        label: sanitize(c.label)
       }
     }))
   }
@@ -277,7 +277,7 @@ const processMRSS = (rssAttributes: { [name: string]: string }, entry: Item, tar
 
     target["media:embed"] = {
       _attributes: {
-        url: entry.embed.url
+        url: sanitize(entry.embed.url)
       }
     }
   }
@@ -298,9 +298,9 @@ const processMRSS = (rssAttributes: { [name: string]: string }, entry: Item, tar
 
       target["media:subTitle"] = {
         _attributes: {
-          href: sub.href,
-          type: sub.type,
-          lang: sub.lang
+          href: sanitize(sub.href),
+          type: sanitize(sub.type),
+          lang: sanitize(sub.lang)
         }
       }
     }
@@ -311,7 +311,7 @@ const processMRSS = (rssAttributes: { [name: string]: string }, entry: Item, tar
 
     target["media:player"] = {
       _attributes: {
-        url: entry.player.url
+        url: sanitize(entry.player.url)
       }
     }
   }
@@ -323,7 +323,7 @@ const processMRSS = (rssAttributes: { [name: string]: string }, entry: Item, tar
     mediagroup["media:peerLink"] = entry.torrents.map((t, i) => ({
       _attributes: {
         type: "application/x-bittorrent",
-        href: t.url,
+        href: sanitize(t.url),
 
         // Prefer defaulting obn videos
         isDefault: (Array.isArray(entry.videos) === false || entry.videos?.length === 0) && i === 0
@@ -336,11 +336,11 @@ const processMRSS = (rssAttributes: { [name: string]: string }, entry: Item, tar
   if (Array.isArray(entry.videos)) {
     mediagroup["media:content"] = entry.videos.map((v, i) => ({
       _attributes: {
-        type: v.type,
-        medium: v.medium,
+        type: sanitize(v.type),
+        medium: sanitize(v.medium),
         height: v.height,
         fileSize: v.fileSize,
-        url: v.url,
+        url: sanitize(v.url),
         framerate: v.framerate,
         duration: v.duration,
         isDefault: i === 0
@@ -361,7 +361,7 @@ const processMRSS = (rssAttributes: { [name: string]: string }, entry: Item, tar
 
     target["media:thumbnail"] = entry.thumbnails.map(t => ({
       _attributes: {
-        url: t.url,
+        url: sanitize(t.url),
         height: t.height,
         width: t.width
       }
