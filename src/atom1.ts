@@ -1,15 +1,15 @@
-import * as convert from "xml-js";
-import { generator } from "./config";
-import { Feed } from "./feed";
-import { Author, Category, Item } from "./typings";
-import { sanitize } from "./utils";
+import * as convert from "xml-js"
+import { generator } from "./config"
+import { Feed } from "./feed"
+import { Author, Category, Item } from "./typings"
+import { sanitize } from "./utils"
 
 /**
  * Returns an Atom feed
  * @param ins
  */
 export default (ins: Feed) => {
-  const { options } = ins;
+  const { options } = ins
 
   const base: any = {
     _declaration: { _attributes: { version: "1.0", encoding: "utf-8" } },
@@ -20,29 +20,29 @@ export default (ins: Feed) => {
       updated: options.updated ? options.updated.toISOString() : new Date().toISOString(),
       generator: sanitize(options.generator || generator)
     }
-  };
-
-  if (options.author) {
-    base.feed.author = formatAuthor(options.author);
   }
 
-  base.feed.link = [];
+  if (options.author) {
+    base.feed.author = formatAuthor(options.author)
+  }
+
+  base.feed.link = []
 
   // link (rel="alternate")
   if (options.link) {
-    base.feed.link.push({ _attributes: { rel: "alternate", href: sanitize(options.link) } });
+    base.feed.link.push({ _attributes: { rel: "alternate", href: sanitize(options.link) } })
   }
 
   // link (rel="self")
-  const atomLink = sanitize(options.feed || (options.feedLinks && options.feedLinks.atom));
+  const atomLink = sanitize(options.feed || (options.feedLinks && options.feedLinks.atom))
 
   if (atomLink) {
-    base.feed.link.push({ _attributes: { rel: "self", href: sanitize(atomLink) } });
+    base.feed.link.push({ _attributes: { rel: "self", href: sanitize(atomLink) } })
   }
 
   // link (rel="hub")
   if (options.hub) {
-    base.feed.link.push({ _attributes: { rel: "hub", href: sanitize(options.hub) } });
+    base.feed.link.push({ _attributes: { rel: "hub", href: sanitize(options.hub) } })
   }
 
   /**************************************************************************
@@ -50,36 +50,36 @@ export default (ins: Feed) => {
    *************************************************************************/
 
   if (options.description) {
-    base.feed.subtitle = options.description;
+    base.feed.subtitle = options.description
   }
 
   if (options.image) {
-    base.feed.logo = options.image;
+    base.feed.logo = options.image
   }
 
   if (options.favicon) {
-    base.feed.icon = options.favicon;
+    base.feed.icon = options.favicon
   }
 
   if (options.copyright) {
-    base.feed.rights = options.copyright;
+    base.feed.rights = options.copyright
   }
 
-  base.feed.category = [];
+  base.feed.category = []
 
   ins.categories.map((category: string) => {
-    base.feed.category.push({ _attributes: { term: category } });
-  });
+    base.feed.category.push({ _attributes: { term: category } })
+  })
 
-  base.feed.contributor = [];
+  base.feed.contributor = []
 
   ins.contributors.map((contributor: Author) => {
-    base.feed.contributor.push(formatAuthor(contributor));
-  });
+    base.feed.contributor.push(formatAuthor(contributor))
+  })
 
   // icon
 
-  base.feed.entry = [];
+  base.feed.entry = []
 
   /**************************************************************************
    * "entry" nodes
@@ -94,7 +94,7 @@ export default (ins: Feed) => {
       id: sanitize(item.id || item.link),
       link: [{ _attributes: { href: sanitize(item.link) } }],
       updated: item.date.toISOString()
-    };
+    }
 
     //
     // entry: recommended elements
@@ -103,23 +103,23 @@ export default (ins: Feed) => {
       entry.summary = {
         _attributes: { type: "html" },
         _cdata: item.description,
-      };
+      }
     }
 
     if (item.content) {
       entry.content = {
         _attributes: { type: "html" },
         _cdata: item.content,
-      };
+      }
     }
 
     // entry author(s)
     if (Array.isArray(item.author)) {
-      entry.author = [];
+      entry.author = []
 
       item.author.map((author: Author) => {
-        entry.author.push(formatAuthor(author));
-      });
+        entry.author.push(formatAuthor(author))
+      })
     }
 
     // content
@@ -132,65 +132,65 @@ export default (ins: Feed) => {
 
     // category
     if (Array.isArray(item.category)) {
-      entry.category = [];
+      entry.category = []
 
       item.category.map((category: Category) => {
-        entry.category.push(formatCategory(category));
-      });
+        entry.category.push(formatCategory(category))
+      })
     }
 
     // contributor
     if (item.contributor && Array.isArray(item.contributor)) {
-      entry.contributor = [];
+      entry.contributor = []
 
       item.contributor.map((contributor: Author) => {
-        entry.contributor.push(formatAuthor(contributor));
-      });
+        entry.contributor.push(formatAuthor(contributor))
+      })
     }
 
     // published
     if (item.published) {
-      entry.published = item.published.toISOString();
+      entry.published = item.published.toISOString()
     }
 
     // source
 
     // rights
     if (item.copyright) {
-      entry.rights = item.copyright;
+      entry.rights = item.copyright
     }
 
-    base.feed.entry.push(entry);
-  });
+    base.feed.entry.push(entry)
+  })
 
-  return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 });
-};
+  return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 })
+}
 
 /**
  * Returns a formatted author
  * @param author
  */
 const formatAuthor = (author: Author) => {
-  const { name, email, link } = author;
+  const { name, email, link } = author
 
-  const out: { name?: string, email?: string, uri?: string } = { name };
+  const out: { name?: string, email?: string, uri?: string | null } = { name }
   if (email) {
-    out.email = email;
+    out.email = email
   }
 
   if (link) {
-    out.uri = sanitize(link);
+    out.uri = sanitize(link)
   }
 
-  return out;
-};
+  return out
+}
 
 /**
  * Returns a formatted category
  * @param category
  */
 const formatCategory = (category: Category) => {
-  const { name, scheme, term } = category;
+  const { name, scheme, term } = category
 
   return {
     _attributes: {
@@ -198,5 +198,5 @@ const formatCategory = (category: Category) => {
       scheme,
       term,
     },
-  };
-};
+  }
+}
