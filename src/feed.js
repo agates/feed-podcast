@@ -798,7 +798,8 @@ class Feed {
           : new Date().toUTCString()
       },
       { docs: "http://blogs.law.harvard.edu/tech/rss" },
-      { generator: options.generator || GENERATOR }
+      { generator: options.generator || GENERATOR },
+      { 'podcast:medium': options.medium || 'podcast' }
     ]
 
     let rss = [{ _attr: { version: "2.0" } }, { channel }]
@@ -955,6 +956,17 @@ class Feed {
       }
 
       const podcastItem = (el, target, isItem = true) => {
+        if (el.socialInteract) {
+          el.socialInteract.forEach(i => {
+            if (!has(i, "uri", "protocol")) return
+
+            target.push({
+              "podcast:socialInteract": [{
+                  _attr: pick(i, ["uri", "protocol", "accountId", "priority"])
+                }]
+            })
+          })
+        }
 
         if (el.subTitle) {
           el.subTitle.forEach(i => {

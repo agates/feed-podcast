@@ -12,6 +12,7 @@ let feed = new Feed({
   copyright: 'All rights reserved 2013, John Doe',
   updated: sampleDate, // optional, default = today
   generator: 'awesome', // optional, default = 'Feed for Node.js'
+  medium: 'music',
   author: {
     name: 'John Doe',
     email: 'johndoe@example.com',
@@ -113,6 +114,10 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
       { value: 1, label: 'Category 1' },
       { value: 2, label: 'Category 2' }
     ],
+    socialInteract: [
+      { uri: "https://example.social/web/@foo/12345", protocol: "activitypub", accountId: "@foo", priority: 1 },
+      { uri: "https://twitter.com/non/existent/uri", protocol: "twitter", accountId: "@foo", priority: 2 }
+    ],
     subTitle: [
       {
         url: "https://example.com/subs/0001.vtt",
@@ -137,6 +142,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome</generator>
+        <podcast:medium>music</podcast:medium>
         <podcast:person>John Doe</podcast:person>
         <itunes:author>John Doe</itunes:author>
         <managingEditor>johndoe@example.com (John Doe)</managingEditor>
@@ -166,6 +172,10 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             <dc:creator>Jane Doe</dc:creator>
             <podcast:person href="https://example.com/jane-doe.html" img="https://example.com/jane-doe.png">Jane Doe</podcast:person>
             <podcast:person role="guest" group="visuals" href="https://example.com/john-doe.html" img="https://example.com/john-doe.png">John Doe</podcast:person>
+            <podcast:socialInteract uri="https://example.social/web/@foo/12345" protocol="activitypub" accountId="@foo" priority="1">
+            </podcast:socialInteract>
+            <podcast:socialInteract uri="https://twitter.com/non/existent/uri" protocol="twitter" accountId="@foo" priority="2">
+            </podcast:socialInteract>
             <podcast:transcript url="https://example.com/subs/0001.vtt" type="application/vtt" language="en-us" rel="captions">
             </podcast:transcript>
             <enclosure type="video/webm" length="12345" url="https://example.com/hello-world.vp8">
