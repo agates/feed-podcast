@@ -798,7 +798,8 @@ class Feed {
           : new Date().toUTCString()
       },
       { docs: "http://blogs.law.harvard.edu/tech/rss" },
-      { generator: options.generator || GENERATOR }
+      { generator: options.generator || GENERATOR },
+      { 'podcast:medium': options.medium || 'podcast' }
     ]
 
     let rss = [{ _attr: { version: "2.0" } }, { channel }]
@@ -808,7 +809,7 @@ class Feed {
 
     let root = [{ rss }]
 
-    if (options.author) {
+    if (options.author && options.author.name) {
       channel.push({
         "podcast:person": [
           { _attr: pick(options.author, ["role", "group", "href", "img"]) },
@@ -817,6 +818,24 @@ class Feed {
       })
       channel.push({
         "itunes:author": options.author.name
+      })
+    }
+
+    if (options.managingEditor && options.managingEditor.name && options.managingEditor.email) {
+      channel.push({
+        "managingEditor": `${options.managingEditor.email} (${options.managingEditor.name})`
+      })
+    }
+
+    if (options.webMaster && options.webMaster.name && options.webMaster.email) {
+      channel.push({
+        "webMaster": `${options.webMaster.email} (${options.webMaster.name})`
+      })
+    }
+
+    if (options.owner && options.owner.name && options.owner.email) {
+      channel.push({
+        "itunes:owner": [{"itunes:email": options.owner.email}, {"itunes:name": options.owner.name}]
       })
     }
 
@@ -937,6 +956,17 @@ class Feed {
       }
 
       const podcastItem = (el, target, isItem = true) => {
+        if (el.socialInteract) {
+          el.socialInteract.forEach(i => {
+            if (!has(i, "uri", "protocol")) return
+
+            target.push({
+              "podcast:socialInteract": [{
+                  _attr: pick(i, ["uri", "protocol", "accountId", "priority"])
+                }]
+            })
+          })
+        }
 
         if (el.subTitle) {
           el.subTitle.forEach(i => {
