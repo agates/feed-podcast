@@ -36,6 +36,55 @@ feed.addCategory('Technology')
 
 test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
   feed.addItem({
+    isLive: true,
+    status: "pending",
+    start: "2022-06-10T01:10:43.562Z",
+    title: 'Hello World, LIVE!',
+    id: 'https://example.com/live-hello-world',
+    link: 'https://example.com/live-hello-world',
+    description: 'This is a Hello World Live stream',
+    date: sampleDate,
+    author: [
+      {
+        name: 'Jane Doe',
+        email: 'jane.doe@example.com',
+        href: 'https://example.com/jane-doe.html',
+        img: 'https://example.com/jane-doe.png'
+      },
+      {
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        role: 'guest',
+        group: 'visuals',
+        href: 'https://example.com/john-doe.html',
+        img: 'https://example.com/john-doe.png'
+      }
+    ],
+    explicit: false,
+    media: [
+      {
+        type: 'application/x-mpegURL',
+        title: 'Live Video',
+        language: "en-us",
+        sources: [
+          { uri: 'https://example.com/live-hello-world.m3u8' }
+        ]
+      }
+    ],
+    thumbnail: [{
+      url: 'https://example.com/live-hello-world.png',
+    }],
+    trackers: [
+      "udp://tracker.example.com:69420",
+      "wss://example.com/tracker/socket"
+    ],
+    categories: [
+      { value: 1, label: 'Category 1' },
+      { value: 2, label: 'Category 2' }
+    ]
+  })
+  
+  feed.addItem({
     title: 'Hello World',
     id: 'https://example.com/hello-world',
     link: 'https://example.com/hello-world',
@@ -110,6 +159,10 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
     thumbnail: [{
       url: 'https://example.com/hello-world.png',
     }],
+    trackers: [
+      "wss://example.com/tracker/socket",
+      "udp://tracker.example.com:80"
+    ],
     categories: [
       { value: 1, label: 'Category 1' },
       { value: 2, label: 'Category 2' }
@@ -162,6 +215,28 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
         <copyright>All rights reserved 2013, John Doe</copyright>
         <category>Technology</category>
         <itunes:category text="Technology"/>
+        <podcast:liveItem status="pending" start="2022-06-10T01:10:43.562Z">
+            <title><![CDATA[Hello World, LIVE!]]></title>
+            <link>https://example.com/live-hello-world</link>
+            <guid>https://example.com/live-hello-world</guid>
+            <pubDate>Sat, 13 Jul 2013 23:00:00 GMT</pubDate>
+            <description><![CDATA[This is a Hello World Live stream]]></description>
+            <author>jane.doe@example.com (Jane Doe)</author>
+            <dc:creator>Jane Doe</dc:creator>
+            <podcast:person href="https://example.com/jane-doe.html" img="https://example.com/jane-doe.png">Jane Doe</podcast:person>
+            <podcast:person role="guest" group="visuals" href="https://example.com/john-doe.html" img="https://example.com/john-doe.png">John Doe</podcast:person>
+            <podcast:tracker>udp://tracker.example.com:69420</podcast:tracker>
+            <podcast:tracker>wss://example.com/tracker/socket</podcast:tracker>
+            <enclosure type="application/x-mpegURL" url="https://example.com/live-hello-world.m3u8">
+            </enclosure>
+            <podcast:alternateEnclosure type="application/x-mpegURL" language="en-us" default="true">
+                <podcast:source uri="https://example.com/live-hello-world.m3u8">
+                </podcast:source>
+            </podcast:alternateEnclosure>
+            <itunes:image href="https://example.com/live-hello-world.png">
+            </itunes:image>
+            <itunes:explicit>no</itunes:explicit>
+        </podcast:liveItem>
         <item>
             <title><![CDATA[Hello World]]></title>
             <link>https://example.com/hello-world</link>
@@ -172,13 +247,15 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             <dc:creator>Jane Doe</dc:creator>
             <podcast:person href="https://example.com/jane-doe.html" img="https://example.com/jane-doe.png">Jane Doe</podcast:person>
             <podcast:person role="guest" group="visuals" href="https://example.com/john-doe.html" img="https://example.com/john-doe.png">John Doe</podcast:person>
+            <podcast:tracker>wss://example.com/tracker/socket</podcast:tracker>
+            <podcast:tracker>udp://tracker.example.com:80</podcast:tracker>
             <podcast:socialInteract uri="https://example.social/web/@foo/12345" protocol="activitypub" accountId="@foo" priority="1">
             </podcast:socialInteract>
             <podcast:socialInteract uri="https://twitter.com/non/existent/uri" protocol="twitter" accountId="@foo" priority="2">
             </podcast:socialInteract>
             <podcast:transcript url="https://example.com/subs/0001.vtt" type="application/vtt" language="en-us" rel="captions">
             </podcast:transcript>
-            <enclosure type="video/webm" length="12345" url="https://example.com/hello-world.vp8">
+            <enclosure type="video/webm" url="https://example.com/hello-world.vp8" length="12345">
             </enclosure>
             <podcast:alternateEnclosure type="video/webm" codecs="vp8" length="12345" bitrate="400000" language="en-us" default="true">
                 <podcast:source uri="https://example.com/hello-world.vp8">

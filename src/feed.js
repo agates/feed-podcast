@@ -9,6 +9,7 @@ class Feed {
   constructor(options) {
     this.options = options
     this.items = []
+    this.liveItems = []
     this.categories = []
     this.contributors = []
     this.extensions = []
@@ -17,6 +18,10 @@ class Feed {
 
   addItem(item) {
     this.items.push(item)
+  }
+
+  addLiveItem(item) {
+    this.liveItems.push(item)
   }
 
   addCustomField(field_name) {
@@ -883,12 +888,18 @@ class Feed {
       })
     })
 
-    /**
-     * Channel Categories
-     * http://cyber.law.harvard.edu/rss/rss.html#hrelementsOfLtitemgt
-     */
-    this.items.forEach(entry => {
+    const makeItem = entry => {
       let item = []
+
+      if (entry.isLive) {
+        if (!has(entry, "status")) return
+
+        if (entry["status"] !== "pending" && entry["status"] !== "live" && entry["status"] !== "ended") return
+
+        item.push({
+          _attr: pick(entry, ["status", "start", "end"])
+        })
+      }
 
       // Handle custom fields
       this.custom_fields.forEach(field_name => {
@@ -956,6 +967,14 @@ class Feed {
       }
 
       const podcastItem = (el, target, isItem = true) => {
+        if (el.trackers) {
+          el.trackers.forEach(i => {
+            if (typeof i !== 'string' && !(i instanceof String)) return
+
+            target.push({ "podcast:tracker": i })
+          })
+        }
+
         if (el.socialInteract) {
           el.socialInteract.forEach(i => {
             if (!has(i, "uri", "protocol")) return
@@ -986,13 +1005,18 @@ class Feed {
           if (index === 0) {
             m["default"] = true
 
+            const defaultEnclosure = {
+              type: m.type,
+              url: m.sources[0].uri
+            }
+
+            if (m.length) {
+              Object.assign(defaultEnclosure, { length: m.length })
+            }
+
             target.push({
               enclosure: [{
-                  _attr: {
-                    type: m.type,
-                    length: m.length,
-                    url: m.sources[0].uri
-                  }
+                  _attr: defaultEnclosure
                 }]
             })
           }
@@ -1037,8 +1061,19 @@ class Feed {
       }
       item.push({ "itunes:explicit": entry.explicit ? "yes" : "no" })
 
-      channel.push({ item })
-    })
+      if (entry.isLive) {
+        channel.push({ "podcast:liveItem": item })
+      } else {
+        channel.push({ item })
+      }
+    }
+
+    /**
+     * Channel Categories
+     * http://cyber.law.harvard.edu/rss/rss.html#hrelementsOfLtitemgt
+     */
+    this.liveItems.forEach(makeItem)
+    this.items.forEach(makeItem)
 
     if (isContent) {
       rss[0]._attr["xmlns:content"] = "http://purl.org/rss/1.0/modules/content/"
