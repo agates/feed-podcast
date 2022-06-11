@@ -1021,7 +1021,7 @@ class Feed {
             })
           }
           const alternateEnclosure = [{
-              _attr: pick(m, ["type", "codecs", "length", "bitrate", "height", "language", "rel", "default"])
+              _attr: pick(m, ["type", "codecs", "length", "bitrate", "height", "language", "rel", "title", "default"])
             }]
           m.sources.forEach(s => {
             if (!has(s, "uri")) return

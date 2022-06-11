@@ -229,7 +229,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             <podcast:tracker>wss://example.com/tracker/socket</podcast:tracker>
             <enclosure type="application/x-mpegURL" url="https://example.com/live-hello-world.m3u8">
             </enclosure>
-            <podcast:alternateEnclosure type="application/x-mpegURL" language="en-us" default="true">
+            <podcast:alternateEnclosure type="application/x-mpegURL" language="en-us" title="Live Video" default="true">
                 <podcast:source uri="https://example.com/live-hello-world.m3u8">
                 </podcast:source>
             </podcast:alternateEnclosure>
@@ -257,7 +257,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             </podcast:transcript>
             <enclosure type="video/webm" url="https://example.com/hello-world.vp8" length="12345">
             </enclosure>
-            <podcast:alternateEnclosure type="video/webm" codecs="vp8" length="12345" bitrate="400000" language="en-us" default="true">
+            <podcast:alternateEnclosure type="video/webm" codecs="vp8" length="12345" bitrate="400000" language="en-us" title="Video - vp8" default="true">
                 <podcast:source uri="https://example.com/hello-world.vp8">
                 </podcast:source>
                 <podcast:source uri="https://example.com/hello-world-vp8-ogg.torrent" contentType="application/x-bittorrent">
@@ -267,7 +267,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
                 <podcast:integrity type="pgp-signature" value="0001pgp">
                 </podcast:integrity>
             </podcast:alternateEnclosure>
-            <podcast:alternateEnclosure type="video/webm" codecs="vp9" length="54321" bitrate="500000" height="720" language="en-us">
+            <podcast:alternateEnclosure type="video/webm" codecs="vp9" length="54321" bitrate="500000" height="720" language="en-us" title="Video - vp9">
                 <podcast:source uri="https://example.com/hello-world.vp9">
                 </podcast:source>
                 <podcast:source uri="https://example.com/hello-world-vp9-ogg.torrent" contentType="application/x-bittorrent">
