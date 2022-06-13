@@ -904,7 +904,7 @@ class Feed {
       })
     })
 
-    if (this.tags) {
+    if (this.tags.length > 0) {
       let delimiter = ","
       if (options.tagDelimiter) {
         delimiter = options.tagDelimiter
@@ -997,7 +997,7 @@ class Feed {
       }
 
       const podcastItem = (el, target, isItem = true) => {
-        if (el.categories) {
+        if (el.categories.length > 0) {
           let delimiter = ","
           if (options.tagDelimiter) {
             delimiter = options.tagDelimiter
