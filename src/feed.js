@@ -838,10 +838,21 @@ class Feed {
       })
     }
 
-    if (options.owner && options.owner.name && options.owner.email) {
-      channel.push({
-        "itunes:owner": [{"itunes:email": options.owner.email}, {"itunes:name": options.owner.name}]
-      })
+    if (options.owner && options.owner.email) {
+      if (options.owner.name) {
+        channel.push({
+          "itunes:owner": [{"itunes:email": options.owner.email}, {"itunes:name": options.owner.name}]
+        })
+      }
+
+      if (options.locked && (options.locked === "yes" || options.locked === "no")) {
+        channel.push({
+          "podcast:locked": [
+            { _attr: {"owner": options.owner.email} },
+            options.locked
+          ]
+        })
+      }
     }
 
     channel.push({

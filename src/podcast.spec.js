@@ -13,6 +13,7 @@ let feed = new Feed({
   updated: sampleDate, // optional, default = today
   generator: 'awesome', // optional, default = 'Feed for Node.js'
   medium: 'music',
+  locked: 'yes',
   author: {
     name: 'John Doe',
     email: 'johndoe@example.com',
@@ -204,6 +205,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             <itunes:email>johndoe@example.com</itunes:email>
             <itunes:name>John Doe</itunes:name>
         </itunes:owner>
+        <podcast:locked owner="johndoe@example.com">yes</podcast:locked>
         <itunes:explicit>no</itunes:explicit>
         <image>
             <title>Feed Title</title>
