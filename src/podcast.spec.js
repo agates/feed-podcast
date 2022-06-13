@@ -14,6 +14,7 @@ let feed = new Feed({
   generator: 'awesome', // optional, default = 'Feed for Node.js'
   medium: 'music',
   locked: 'yes',
+  tagDelimiter: ',',
   author: {
     name: 'John Doe',
     email: 'johndoe@example.com',
@@ -34,6 +35,10 @@ let feed = new Feed({
 })
 
 feed.addCategory('Technology')
+feed.addTag('daily news')
+feed.addTag('weather')
+feed.addTag('bad humor')
+feed.addTag('this isn\'t funny')
 
 test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
   feed.addItem({
@@ -80,8 +85,8 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
       "wss://example.com/tracker/socket"
     ],
     categories: [
-      { value: 1, label: 'Category 1' },
-      { value: 2, label: 'Category 2' }
+      "live cats",
+      "live dogs"
     ]
   })
   
@@ -165,8 +170,9 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
       "udp://tracker.example.com:80"
     ],
     categories: [
-      { value: 1, label: 'Category 1' },
-      { value: 2, label: 'Category 2' }
+      "rats",
+      "🐀",
+      "Halloween"
     ],
     socialInteract: [
       { uri: "https://example.social/web/@foo/12345", protocol: "activitypub", accountId: "@foo", priority: 1 },
@@ -217,6 +223,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
         <copyright>All rights reserved 2013, John Doe</copyright>
         <category>Technology</category>
         <itunes:category text="Technology"/>
+        <podcast:categories delimiter=",">daily news,weather,bad humor,this isn&apos;t funny</podcast:categories>
         <podcast:liveItem status="pending" start="2022-06-10T01:10:43.562Z">
             <title><![CDATA[Hello World, LIVE!]]></title>
             <link>https://example.com/live-hello-world</link>
@@ -227,6 +234,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             <dc:creator>Jane Doe</dc:creator>
             <podcast:person href="https://example.com/jane-doe.html" img="https://example.com/jane-doe.png">Jane Doe</podcast:person>
             <podcast:person role="guest" group="visuals" href="https://example.com/john-doe.html" img="https://example.com/john-doe.png">John Doe</podcast:person>
+            <podcast:categories delimiter=",">live cats,live dogs</podcast:categories>
             <podcast:tracker>udp://tracker.example.com:69420</podcast:tracker>
             <podcast:tracker>wss://example.com/tracker/socket</podcast:tracker>
             <enclosure type="application/x-mpegURL" url="https://example.com/live-hello-world.m3u8">
@@ -249,6 +257,7 @@ test('it should generate a Podcast Namespace 1.0 RSS 2.0 feed', () => {
             <dc:creator>Jane Doe</dc:creator>
             <podcast:person href="https://example.com/jane-doe.html" img="https://example.com/jane-doe.png">Jane Doe</podcast:person>
             <podcast:person role="guest" group="visuals" href="https://example.com/john-doe.html" img="https://example.com/john-doe.png">John Doe</podcast:person>
+            <podcast:categories delimiter=",">rats,🐀,Halloween</podcast:categories>
             <podcast:tracker>wss://example.com/tracker/socket</podcast:tracker>
             <podcast:tracker>udp://tracker.example.com:80</podcast:tracker>
             <podcast:socialInteract uri="https://example.social/web/@foo/12345" protocol="activitypub" accountId="@foo" priority="1">

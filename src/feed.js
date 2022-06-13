@@ -11,6 +11,7 @@ class Feed {
     this.items = []
     this.liveItems = []
     this.categories = []
+    this.tags = []
     this.contributors = []
     this.extensions = []
     this.custom_fields = []
@@ -30,6 +31,10 @@ class Feed {
 
   addCategory(category) {
     this.categories.push(category)
+  }
+
+  addTag(tag) {
+    this.tags.push(tag)
   }
 
   addContributor(contributor) {
@@ -899,6 +904,20 @@ class Feed {
       })
     })
 
+    if (this.tags) {
+      let delimiter = ","
+      if (options.tagDelimiter) {
+        delimiter = options.tagDelimiter
+      }
+
+      channel.push({
+        "podcast:categories": [
+          { _attr: { delimiter: delimiter } },
+          this.tags.join(delimiter)
+        ]
+      })
+    }
+
     const makeItem = entry => {
       let item = []
 
@@ -978,6 +997,20 @@ class Feed {
       }
 
       const podcastItem = (el, target, isItem = true) => {
+        if (el.categories) {
+          let delimiter = ","
+          if (options.tagDelimiter) {
+            delimiter = options.tagDelimiter
+          }
+    
+          target.push({
+            "podcast:categories": [
+              { _attr: { delimiter: delimiter } },
+              el.categories.join(delimiter)
+            ]
+          })
+        }
+
         if (el.trackers) {
           el.trackers.forEach(i => {
             if (typeof i !== 'string' && !(i instanceof String)) return
