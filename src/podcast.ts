@@ -1,7 +1,7 @@
 import * as convert from 'xml-js'
 import { generator } from './config'
 import { Feed } from './feed'
-import { Author, Category, Person, PodcastItem, PodcastLiveItem } from './typings'
+import { Author, Category, CustomTag, Person, PodcastItem, PodcastLiveItem } from './typings'
 import { sanitize } from './utils'
 
 /**
@@ -152,6 +152,10 @@ export default (ins: Feed) => {
     }
   }
 
+  if (options.customTags) {
+    addCustomTagsToObject(base.rss.channel, options.customTags)
+  }
+
   base.rss.channel["podcast:liveItem"] = ins.podcastLiveItems.map(makePodcastLiveItemJSON)
   base.rss.channel.item = ins.podcastItems.map(makePodcastItemJSON)
 
@@ -174,6 +178,41 @@ const formatCategory = (category: Category) => {
       domain,
     },
   }
+}
+
+const addCustomTagsToObject = (o: { [key: string]: object | object[] | string }, customTags: CustomTag[]) => {
+  const tagsByName: { [key: string]: CustomTag[] } = customTags.reduce(
+    (tags: { [key: string]: CustomTag[] }, d) => {
+      if (d.name in tags) return tags
+
+      tags[d.name] = customTags.filter(g => g.name === d.name)
+      return tags
+    }, {})
+
+  Object.keys(tagsByName).forEach((tagName) => {
+    // Don't allow custom tags to override existing tags
+    if (tagName in o) return
+
+    o[tagName] = tagsByName[tagName].map((tag) => {
+      const tagObject: { [key: string]: object | object[] | string } = {
+        ...(tag.attributes && { _attributes: tag.attributes }),
+      }
+
+      if (typeof tag.value === "string") {
+        return {
+          ...tagObject,
+          ...(tag.cdata && tag.value && { _cdata: tag.value }),
+          ...(!tag.cdata && tag.value && { _text: tag.value })
+        }
+      } else if (tag.value) {
+        addCustomTagsToObject(tagObject, tag.value)
+
+        return tagObject
+      } else {
+        return tagObject
+      }
+    }).filter((tagObject) => !!tagObject)
+  })
 }
 
 const makePodcastItemJSON = (entry: PodcastItem) => {
@@ -300,6 +339,10 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
         }
       }
     }
+  }
+
+  if (entry.customTags) {
+    addCustomTagsToObject(item, entry.customTags)
   }
 
   return item

@@ -113,6 +113,8 @@ export interface PodcastItem {
   socialInteract?: SocialInteract[]
 
   nsfw?: boolean
+
+  customTags?: CustomTag[]
 }
 
 export interface PodcastLiveItem extends PodcastItem {
@@ -220,9 +222,18 @@ export interface FeedOptions {
   favicon?: string
   copyright: string
   nsfw?: boolean
+
+  customTags?: CustomTag[]
 }
 
 export interface Extension {
   name: string
   objects: any
+}
+
+export interface CustomTag {
+  name: string
+  attributes?: { [key: string]: string }
+  value?: string | CustomTag[]
+  cdata?: boolean
 }

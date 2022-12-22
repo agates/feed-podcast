@@ -108,6 +108,51 @@ describe("podcast", () => {
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
   })
+  it("should generate a valid feed with custom channel tags", () => {
+    const sampleFeed = new Feed({
+      title: "Feed Title",
+      copyright: "All rights reserved 2013, John Doe",
+      updated,
+      customTags: [
+        {
+          name: "fooTag",
+          attributes: { "bar": "baz" },
+        },
+        {
+          name: "fooTag",
+          attributes: { "bar": "baz" },
+          value: "42",
+        },
+        {
+          name: "biz:buzzItem",
+          value: "43",
+          cdata: true,
+        },
+        {
+          name: "biz:buzzItem",
+          value: [
+            {
+              name: "exampleTag",
+              value: "example tag with cdata",
+              cdata: true,
+            },
+          ],
+        },
+        {
+          name: "biz:buzzItem",
+          value: [
+            {
+              name: "exampleTag",
+              value: "example tag without cdata",
+            },
+          ],
+          cdata: true,
+        },
+      ]
+    })
+    const actual = sampleFeed.podcast()
+    expect(actual).toMatchSnapshot()
+  })
   it("should generate a valid feed with a podcast item", () => {
     sampleFeed.addPodcastItem({
       title: "Hello World",
@@ -239,6 +284,79 @@ describe("podcast", () => {
       thumbnails: [{ url: "https://example.com/hello-world.png", }],
       published,
       nsfw: false,
+    })
+    const actual = sampleFeed.podcast()
+    expect(actual).toMatchSnapshot()
+  })
+  it("should generate a valid feed with a podcast item with custom tags", () => {
+    sampleFeed.addPodcastItem({
+      title: "Hello World",
+      link: "https://example.com/hello-world4",
+      description: "This is an article about Hello World.",
+      media: [
+        {
+          type: "audio/mpeg",
+          length: 12345,
+          sources: [
+            { uri: "https://example.com/hello-world.mp3", },
+          ],
+        },
+      ],
+      date: updated,
+      thumbnails: [{ url: "https://example.com/hello-world.png", }],
+      published,
+      nsfw: false,
+      customTags: [
+        {
+          name: "fooTag",
+          attributes: { "bar": "baz" },
+        },
+        {
+          name: "fooTag",
+          attributes: { "bar": "baz" },
+          value: "42",
+        },
+        {
+          name: "biz:buzz",
+          value: "43",
+          cdata: true,
+        },
+        {
+          name: "biz:buzz",
+          value: [
+            {
+              name: "exampleTag",
+              value: "example tag with cdata",
+              cdata: true,
+            },
+          ],
+        },
+        {
+          name: "biz:buzz",
+          value: [
+            {
+              name: "exampleTag",
+              value: "example tag without cdata",
+            },
+          ],
+          cdata: true,
+        },
+        {
+          name: "biz:buzz",
+          value: [
+            {
+              name: "biz:bar",
+              value: [
+                {
+                  name: "dwarf:fortress",
+                  value: "Losing is fun",
+                  cdata: true,
+                },
+              ],
+            },
+          ],
+        },
+      ]
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -510,7 +628,7 @@ describe("podcast", () => {
   })
   it("should generate a valid feed with a podcast liveItem", () => {
     sampleFeed.addPodcastLiveItem({
-      title: "Hello World liev",
+      title: "Hello World live",
       link: "https://example.com/hello-world12",
       guid: "some live episode 341235",
       description: "This is an article about Hello World.",
