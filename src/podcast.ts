@@ -70,6 +70,19 @@ export default (ins: Feed) => {
     }
   }
 
+  if (options.person) {
+    const personTags = options.person.map(({ role, group, href, img, name }: Person) => ({
+      _attributes: { role, group, href, img },
+      _text: name
+    }))
+
+    if (base.rss.channel["podcast:person"]) {
+      personTags.unshift(base.rss.channel["podcast:person"])
+    }
+
+    base.rss.channel["podcast:person"] = personTags
+  }
+
   if (options.managingEditor && options.managingEditor.name && options.managingEditor.email) {
     base.rss.channel["managingEditor"] = { _text: `${options.managingEditor.email} (${options.managingEditor.name})` }
   }
@@ -82,7 +95,7 @@ export default (ins: Feed) => {
   if (options.locked) {
     base.rss.channel["podcast:locked"] = {
       _attributes: { "owner": options.locked.email },
-      _text: options.locked ? "yes" : "no"
+      _text: options.locked.isLocked ? "yes" : "no"
     }
   }
 
@@ -270,8 +283,7 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
     item["podcast:person"] = entry.person.map(({ role, group, href, img, name }: Person) => ({
       _attributes: { role, group, href, img },
       _text: name
-    })
-    )
+    }))
   }
 
   /**
@@ -340,6 +352,8 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
       }
     }
   }
+
+  item["itunes:explicit"] = { _text: entry.nsfw ? "yes" : "no" }
 
   if (entry.customTags) {
     addCustomTagsToObject(item, entry.customTags)

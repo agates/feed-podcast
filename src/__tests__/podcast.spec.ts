@@ -19,6 +19,7 @@ describe("podcast", () => {
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
+
   })
   it("should generate a valid feed managingEditor", () => {
     const sampleFeed = new Feed({
@@ -66,7 +67,7 @@ describe("podcast", () => {
       title: "Feed Title",
       copyright: "All rights reserved 2013, John Doe",
       updated,
-      persons: [
+      person: [
         {
           name: "John Doe",
           href: "https://example.com/hello-world?link=sanitized&value=2",
