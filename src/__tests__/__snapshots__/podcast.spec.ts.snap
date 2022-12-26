@@ -132,7 +132,7 @@ exports[`podcast should generate a valid feed person 1`] = `
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <podcast:medium>podcast</podcast:medium>
-        <podcast:person href=\\"https://example.com/hello-world?link=sanitized&value=2\\" img=\\"https://example.com/john-doe.png\\">John Doe</podcast:person>
+        <podcast:person href=\\"https://example.com/hello-world?link=sanitized&amp;value=2\\" img=\\"https://example.com/john-doe.png\\">John Doe</podcast:person>
         <podcast:locked owner=\\"johndoe@example.com\\">yes</podcast:locked>
         <itunes:explicit>no</itunes:explicit>
         <copyright>All rights reserved 2013, John Doe</copyright>
@@ -287,6 +287,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -578,6 +579,7 @@ exports[`podcast should generate a valid feed with a podcast item guid enclosure
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -691,6 +693,7 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -818,6 +821,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -974,6 +978,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1148,6 +1153,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1255,7 +1261,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
@@ -1414,6 +1420,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1521,7 +1528,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
@@ -1635,6 +1642,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1775,6 +1783,7 @@ exports[`podcast should generate a valid feed with a podcast item with custom ta
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1910,6 +1919,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -2017,7 +2027,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
@@ -2181,6 +2191,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -2288,7 +2299,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
@@ -2418,6 +2429,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -2525,7 +2537,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">

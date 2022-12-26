@@ -324,6 +324,10 @@ describe("podcast", () => {
         },
         {
           name: "biz:buzz",
+          attributes: { "bar": "https://foo?bar=baz&fizz='buzz'" },
+        },
+        {
+          name: "biz:buzz",
           value: [
             {
               name: "exampleTag",

@@ -62,7 +62,7 @@ export default (ins: Feed) => {
   if (options.author && options.author.name) {
     if (options.author.link) {
       base.rss.channel["podcast:person"] = {
-        _attributes: { "href": sanitize(options.author.link) },
+        _attributes: { href: sanitize(options.author.link) },
         _text: options.author.name
       }
     } else {
@@ -72,7 +72,7 @@ export default (ins: Feed) => {
 
   if (options.person) {
     const personTags = options.person.map(({ role, group, href, img, name }: Person) => ({
-      _attributes: { role, group, href, img },
+      _attributes: { role, group, href: sanitize(href), img: sanitize(img) },
       _text: name
     }))
 
@@ -207,8 +207,18 @@ const addCustomTagsToObject = (o: { [key: string]: object | object[] | string },
     if (tagName in o) return
 
     o[tagName] = tagsByName[tagName].map((tag) => {
+      let sanitizedAttributes: { [key: string]: string } = {}
+      if (tag.attributes) {
+        sanitizedAttributes = Object.keys(tag.attributes).reduce((cur, key) => {
+          if (tag.attributes) {
+            cur[key] = sanitize(tag.attributes[key]) ?? ""
+          }
+          return cur
+        }, sanitizedAttributes)
+      }
+
       const tagObject: { [key: string]: object | object[] | string } = {
-        ...(tag.attributes && { _attributes: tag.attributes }),
+        ...(sanitizedAttributes && { _attributes: sanitizedAttributes }),
       }
 
       if (typeof tag.value === "string") {
@@ -281,7 +291,7 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
 
   if (entry.person) {
     item["podcast:person"] = entry.person.map(({ role, group, href, img, name }: Person) => ({
-      _attributes: { role, group, href, img },
+      _attributes: { role, group, href: sanitize(href), img: sanitize(img) },
       _text: name
     }))
   }
@@ -302,13 +312,13 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
 
   if (entry.socialInteract) {
     item["podcast:socialInteract"] = entry.socialInteract.map(({ uri, protocol, accountId, accountUrl, priority }) => ({
-      _attributes: { uri, protocol, accountId, accountUrl, priority }
+      _attributes: { uri: sanitize(uri), protocol, accountId, accountUrl: sanitize(accountUrl), priority }
     }))
   }
 
   if (entry.subTitle) {
     item["podcast:transcript"] = entry.subTitle.map(({ url, type, language, rel }) => ({
-      _attributes: { url, type, language, rel }
+      _attributes: { url: sanitize(url), type, language, rel }
     }))
   }
 
@@ -316,7 +326,7 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
 
   item.enclosure = {
     _attributes: {
-      url: defaultEnclosure.sources[0].uri,
+      url: sanitize(defaultEnclosure.sources[0].uri),
       length: defaultEnclosure.length,
       type: defaultEnclosure.type
     }
@@ -325,7 +335,7 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
   item["podcast:alternateEnclosure"] = entry.media.map(
     ({ type, codecs, length, bitrate, height, language, rel, title, sources, integrity }, index) => ({
       _attributes: { type, codecs, length, bitrate, height, language, rel, title, default: index === 0 ? "true" : "false" },
-      "podcast:source": sources.map(({ uri, contentType }) => ({ _attributes: { uri, contentType } })),
+      "podcast:source": sources.map(({ uri, contentType }) => ({ _attributes: { uri: sanitize(uri), contentType } })),
       ...(integrity && { "podcast:integrity": integrity?.map(({ type, value }) => ({ _attributes: { type, value } })) })
     })
   )
@@ -334,7 +344,7 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
     const defaultImage = entry.thumbnails[0]
 
     item["itunes:image"] = {
-      _attributes: { href: defaultImage.url }
+      _attributes: { href: sanitize(defaultImage.url) }
     }
 
     const thumbnailsWithWidth = entry.thumbnails
@@ -346,7 +356,7 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
       item["podcast:images"] = {
         _attributes: {
           srcset: thumbnailsWithWidth
-            .map(({ url, width }) => (`${url} ${width}w`))
+            .map(({ url, width }) => (`${sanitize(url)} ${width}w`))
             .join(", ")
         }
       }
