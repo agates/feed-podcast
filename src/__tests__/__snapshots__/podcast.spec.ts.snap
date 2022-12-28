@@ -116,7 +116,7 @@ exports[`podcast should generate a valid feed not locked 1`] = `
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <podcast:medium>podcast</podcast:medium>
-        <podcast:locked owner=\\"johndoe@example.com\\">yes</podcast:locked>
+        <podcast:locked owner=\\"johndoe@example.com\\">no</podcast:locked>
         <itunes:explicit>no</itunes:explicit>
         <copyright>All rights reserved 2013, John Doe</copyright>
     </channel>
@@ -132,6 +132,7 @@ exports[`podcast should generate a valid feed person 1`] = `
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <podcast:medium>podcast</podcast:medium>
+        <podcast:person href=\\"https://example.com/hello-world?link=sanitized&amp;value=2\\" img=\\"https://example.com/john-doe.png\\">John Doe</podcast:person>
         <podcast:locked owner=\\"johndoe@example.com\\">yes</podcast:locked>
         <itunes:explicit>no</itunes:explicit>
         <copyright>All rights reserved 2013, John Doe</copyright>
@@ -195,6 +196,7 @@ exports[`podcast should generate a valid feed with a podcast item 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -240,6 +242,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -254,6 +257,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -266,6 +270,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -278,9 +283,11 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -303,6 +310,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -316,6 +324,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -328,6 +337,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -343,6 +353,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
                 <podcast:source uri=\\"https://example.com/hello-world.opus\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -360,6 +371,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
                 <podcast:source uri=\\"https://example.com/hello-world-opus.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -374,6 +386,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
                 <podcast:integrity type=\\"pgp-signature\\" value=\\"pgp-signature-value-here\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -401,6 +414,7 @@ exports[`podcast should generate a valid feed with a podcast item explicit 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>yes</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -446,6 +460,7 @@ exports[`podcast should generate a valid feed with a podcast item guid 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -460,6 +475,7 @@ exports[`podcast should generate a valid feed with a podcast item guid 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -472,6 +488,7 @@ exports[`podcast should generate a valid feed with a podcast item guid 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -517,6 +534,7 @@ exports[`podcast should generate a valid feed with a podcast item guid enclosure
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -531,6 +549,7 @@ exports[`podcast should generate a valid feed with a podcast item guid enclosure
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -543,6 +562,7 @@ exports[`podcast should generate a valid feed with a podcast item guid enclosure
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -555,9 +575,11 @@ exports[`podcast should generate a valid feed with a podcast item guid enclosure
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -580,6 +602,7 @@ exports[`podcast should generate a valid feed with a podcast item guid enclosure
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -625,6 +648,7 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -639,6 +663,7 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -651,6 +676,7 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -663,9 +689,11 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -688,6 +716,7 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -701,6 +730,7 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -746,6 +776,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -760,6 +791,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -772,6 +804,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -784,9 +817,11 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -809,6 +844,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -822,6 +858,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -834,6 +871,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -849,6 +887,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
                 <podcast:source uri=\\"https://example.com/hello-world.opus\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -894,6 +933,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -908,6 +948,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -920,6 +961,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -932,9 +974,11 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -957,6 +1001,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -970,6 +1015,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -982,6 +1028,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -997,6 +1044,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
                 <podcast:source uri=\\"https://example.com/hello-world.opus\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1014,6 +1062,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
                 <podcast:source uri=\\"https://example.com/hello-world-opus.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -1059,6 +1108,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1073,6 +1123,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1085,6 +1136,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1097,9 +1149,11 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1122,6 +1176,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1135,6 +1190,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1147,6 +1203,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1162,6 +1219,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.opus\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1179,6 +1237,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world-opus.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1193,6 +1252,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
                 <podcast:integrity type=\\"pgp-signature\\" value=\\"pgp-signature-value-here\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1201,13 +1261,14 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -1253,6 +1314,7 @@ exports[`podcast should generate a valid feed with a podcast item socialInteract
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1267,6 +1329,7 @@ exports[`podcast should generate a valid feed with a podcast item socialInteract
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -1312,6 +1375,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1326,6 +1390,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1338,6 +1403,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1350,9 +1416,11 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1375,6 +1443,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1388,6 +1457,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1400,6 +1470,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1415,6 +1486,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world.opus\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1432,6 +1504,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world-opus.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1446,6 +1519,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:integrity type=\\"pgp-signature\\" value=\\"pgp-signature-value-here\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1454,13 +1528,14 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1476,6 +1551,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
                 <podcast:source uri=\\"https://example.com/hello-world-mp3.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -1521,6 +1597,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1535,6 +1612,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1547,6 +1625,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1559,9 +1638,11 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1584,6 +1665,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1597,6 +1679,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1609,6 +1692,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -1654,6 +1738,7 @@ exports[`podcast should generate a valid feed with a podcast item with custom ta
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1668,6 +1753,7 @@ exports[`podcast should generate a valid feed with a podcast item with custom ta
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1680,6 +1766,7 @@ exports[`podcast should generate a valid feed with a podcast item with custom ta
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1692,9 +1779,11 @@ exports[`podcast should generate a valid feed with a podcast item with custom ta
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1748,6 +1837,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>yes</itunes:explicit>
         </podcast:liveItem>
         <podcast:liveItem status=\\"live\\" start=\\"2022-12-16T01:10:43.562Z\\">
             <title><![CDATA[Hello World live]]></title>
@@ -1765,6 +1855,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </podcast:liveItem>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1783,6 +1874,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1797,6 +1889,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1809,6 +1902,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1821,9 +1915,11 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -1846,6 +1942,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1859,6 +1956,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1871,6 +1969,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1886,6 +1985,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world.opus\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1903,6 +2003,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world-opus.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1917,6 +2018,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:integrity type=\\"pgp-signature\\" value=\\"pgp-signature-value-here\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1925,13 +2027,14 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -1947,6 +2050,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
                 <podcast:source uri=\\"https://example.com/hello-world-mp3.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -1989,6 +2093,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>yes</itunes:explicit>
         </podcast:liveItem>
         <podcast:liveItem status=\\"live\\" start=\\"2022-12-16T01:10:43.562Z\\">
             <title><![CDATA[Hello World live]]></title>
@@ -2006,6 +2111,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </podcast:liveItem>
         <podcast:liveItem status=\\"ended\\" start=\\"2022-12-15T01:01:00.000Z\\" end=\\"2022-12-15T03:59:45.020Z\\">
             <title><![CDATA[Hello World live ended]]></title>
@@ -2021,6 +2127,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </podcast:liveItem>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2039,6 +2146,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2053,6 +2161,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2065,6 +2174,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2077,9 +2187,11 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -2102,6 +2214,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2115,6 +2228,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2127,6 +2241,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2142,6 +2257,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world.opus\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2159,6 +2275,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world-opus.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2173,6 +2290,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:integrity type=\\"pgp-signature\\" value=\\"pgp-signature-value-here\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2181,13 +2299,14 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2203,6 +2322,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
                 <podcast:source uri=\\"https://example.com/hello-world-mp3.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"
@@ -2245,6 +2365,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>yes</itunes:explicit>
         </podcast:liveItem>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2263,6 +2384,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2277,6 +2399,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2289,6 +2412,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2301,9 +2425,11 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
             <fooTag bar=\\"baz\\"/>
             <fooTag bar=\\"baz\\">42</fooTag>
             <biz:buzz><![CDATA[43]]></biz:buzz>
+            <biz:buzz bar=\\"https://foo?bar=baz&amp;fizz=&apos;buzz&apos;\\"/>
             <biz:buzz>
                 <exampleTag><![CDATA[example tag with cdata]]></exampleTag>
             </biz:buzz>
@@ -2326,6 +2452,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2339,6 +2466,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/images/ep1/pci_avatar-massive.jpg\\"/>
             <podcast:images srcset=\\"https://example.com/images/ep1/pci_avatar-massive.jpg 1500w, https://example.com/images/ep1/pci_avatar-middle.jpg 600w, https://example.com/images/ep1/pci_avatar-small.jpg 300w, https://example.com/images/ep1/pci_avatar-tiny.jpg 150w\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2351,6 +2479,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2366,6 +2495,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world.opus\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2383,6 +2513,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world-opus.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2397,6 +2528,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:integrity type=\\"pgp-signature\\" value=\\"pgp-signature-value-here\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2405,13 +2537,14 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
             <pubDate>Wed, 10 Jul 2013 23:00:00 GMT</pubDate>
             <description><![CDATA[This is an article about Hello World.]]></description>
             <content:encoded><![CDATA[Content of my item]]></content:encoded>
-            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
+            <podcast:person role=\\"guest\\" group=\\"visuals\\" href=\\"https://example.com/janedoe?link=sanitized&amp;value=2\\" img=\\"https://example.com/jane-doe.png\\">Jane Doe</podcast:person>
             <podcast:person href=\\"https://example.com/johnsmith\\" img=\\"https://example.com/john-smith.png\\">John Smith</podcast:person>
             <enclosure url=\\"https://example.com/hello-world.mp3\\" length=\\"12345\\" type=\\"audio/mpeg\\"/>
             <podcast:alternateEnclosure type=\\"audio/mpeg\\" length=\\"12345\\" default=\\"true\\">
                 <podcast:source uri=\\"https://example.com/hello-world.mp3\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
         <item>
             <title><![CDATA[Hello World]]></title>
@@ -2427,6 +2560,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
                 <podcast:source uri=\\"https://example.com/hello-world-mp3.torrent\\" contentType=\\"application/x-bittorrent\\"/>
             </podcast:alternateEnclosure>
             <itunes:image href=\\"https://example.com/hello-world.png\\"/>
+            <itunes:explicit>no</itunes:explicit>
         </item>
     </channel>
 </rss>"

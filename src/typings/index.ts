@@ -214,7 +214,7 @@ export interface FeedOptions {
   author?: Author
   managingEditor?: Author,
   webMaster?: Author,
-  persons?: Person[]
+  person?: Person[]
   locked?: { isLocked: boolean, email: string }
   link?: string
   description?: string
