@@ -1,9 +1,9 @@
 {
-  "name": "pfeed-podcast",
-  "version": "6.1.2",
+  "name": "@peertube/feed",
+  "version": "5.0.2",
   "description": "Feed - PeerTube fork",
-  "homepage": "http://github.com/agates/feed",
-  "author": "Alecks Gates <agates@mail.agates.io>",
+  "homepage": "https://github.com/Chocobozzz/feed",
+  "author": "Chocobozzz",
   "license": "MIT",
   "main": "lib/feed.js",
   "types": "lib/feed.d.ts",
@@ -29,10 +29,10 @@
     "node": ">=0.4.0"
   },
   "bugs": {
-    "url": "https://github.com/agates/feed/issues"
+    "url": "https://github.com/Chocobozzz/feed/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/agates/feed.git"
+    "url": "https://github.com/Chocobozzz/feed.git"
   }
 }
