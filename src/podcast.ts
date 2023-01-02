@@ -334,7 +334,7 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
 
   item["podcast:alternateEnclosure"] = entry.media.map(
     ({ type, codecs, length, bitrate, height, language, rel, title, sources, integrity }, index) => ({
-      _attributes: { type, codecs, length, bitrate, height, language, rel, title, default: index === 0 ? "true" : "false" },
+      _attributes: { type, codecs, length, bitrate, height, lang: language, rel, title, default: index === 0 ? "true" : "false" },
       "podcast:source": sources.map(({ uri, contentType }) => ({ _attributes: { uri: sanitize(uri), contentType } })),
       ...(integrity && { "podcast:integrity": integrity?.map(({ type, value }) => ({ _attributes: { type, value } })) })
     })
