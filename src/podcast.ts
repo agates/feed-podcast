@@ -31,6 +31,17 @@ export default (ins: Feed) => {
     },
   }
 
+  if (options.customXMLNS) {
+    Object.assign(base.rss._attributes, options.customXMLNS.reduce(
+      (acc: { [key: string]: string }, c) => {
+        const xmlnsName = `xmlns:${c.name}`
+        if (xmlnsName in acc) return acc
+
+        acc[xmlnsName] = c.value
+        return acc
+      }, {}))
+  }
+
   if (options.link) {
     base.rss.channel.link = { _text: sanitize(options.link) }
   }

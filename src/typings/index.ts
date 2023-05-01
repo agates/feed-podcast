@@ -223,12 +223,18 @@ export interface FeedOptions {
   copyright: string
   nsfw?: boolean
 
+  customXMLNS?: CustomXMLNS[]
   customTags?: CustomTag[]
 }
 
 export interface Extension {
   name: string
   objects: any
+}
+
+export interface CustomXMLNS {
+  name: string,
+  value: string
 }
 
 export interface CustomTag {
