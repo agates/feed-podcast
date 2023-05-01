@@ -176,6 +176,18 @@ export default (ins: Feed) => {
     }
   }
 
+  if (options.stunServers) {
+    base.rss.channel["podcast:stun"] = options.stunServers.map(stunServer => ({
+      _text: stunServer
+    }))
+  }
+
+  if (options.trackers) {
+    base.rss.channel["podcast:tracker"] = options.trackers.map(tracker => ({
+      _text: tracker
+    }))
+  }
+
   if (options.customTags) {
     addCustomTagsToObject(base.rss.channel, options.customTags)
   }
@@ -313,6 +325,12 @@ const makePodcastItemJSON = (entry: PodcastItem) => {
    */
   if (Array.isArray(entry.category)) {
     item.category = entry.category.map(formatCategory)
+  }
+
+  if (entry.stunServers) {
+    item["podcast:stun"] = entry.stunServers.map(stunServer => ({
+      _text: stunServer
+    }))
   }
 
   if (entry.trackers) {

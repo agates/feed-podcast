@@ -108,6 +108,7 @@ export interface PodcastItem {
     width?: number
   }[]
 
+  stunServers?: string[]
   trackers?: string[]
 
   socialInteract?: SocialInteract[]
@@ -221,7 +222,10 @@ export interface FeedOptions {
   image?: string
   favicon?: string
   copyright: string
-  nsfw?: boolean
+  nsfw?: boolean,
+
+  stunServers?: string[]
+  trackers?: string[]
 
   customXMLNS?: CustomXMLNS[]
   customTags?: CustomTag[]
