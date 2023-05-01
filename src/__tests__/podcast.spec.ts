@@ -16,6 +16,12 @@ describe("podcast", () => {
         name: "John Doe",
         email: "johndoe@example.com",
       },
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -30,6 +36,12 @@ describe("podcast", () => {
         name: "John Doe",
         email: "johndoe@example.com",
       },
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -43,6 +55,12 @@ describe("podcast", () => {
         name: "John Doe",
         email: "johndoe@example.com",
       },
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -58,6 +76,12 @@ describe("podcast", () => {
         email: "johndoe@example.com",
         link: "https://example.com/hello-world?link=sanitized&value=2",
       },
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -75,6 +99,12 @@ describe("podcast", () => {
         },
       ],
       locked: { isLocked: true, email: "johndoe@example.com" },
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -85,6 +115,12 @@ describe("podcast", () => {
       guid: "81db299a-e533-45a4-a2c1-59fd9501713a",
       copyright: "All rights reserved 2013, John Doe",
       updated,
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -95,6 +131,12 @@ describe("podcast", () => {
       copyright: "All rights reserved 2013, John Doe",
       updated,
       locked: { isLocked: true, email: "johndoe@example.com" },
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -105,6 +147,12 @@ describe("podcast", () => {
       copyright: "All rights reserved 2013, John Doe",
       updated,
       locked: { isLocked: false, email: "johndoe@example.com" },
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
@@ -114,6 +162,12 @@ describe("podcast", () => {
       title: "Feed Title",
       copyright: "All rights reserved 2013, John Doe",
       updated,
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        }
+      ],
       customTags: [
         {
           name: "fooTag",
@@ -243,6 +297,12 @@ describe("podcast", () => {
       copyright: "All rights reserved 2013, John Doe",
       updated,
       nsfw: true,
+      customXMLNS: [
+        {
+          name: "biz",
+          value: "http://example.com/biz-xmlns"
+        },
+      ],
     })
 
     sampleFeed.addPodcastItem({
@@ -353,7 +413,7 @@ describe("podcast", () => {
               name: "biz:bar",
               value: [
                 {
-                  name: "dwarf:fortress",
+                  name: "biz:dwarfFortress",
                   value: "Losing is fun",
                   cdata: true,
                 },

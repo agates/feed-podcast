@@ -2,7 +2,7 @@
 
 exports[`podcast should generate a valid feed 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -29,7 +29,7 @@ exports[`podcast should generate a valid feed 1`] = `
 
 exports[`podcast should generate a valid feed author no link 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -45,7 +45,7 @@ exports[`podcast should generate a valid feed author no link 1`] = `
 
 exports[`podcast should generate a valid feed guid 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -61,7 +61,7 @@ exports[`podcast should generate a valid feed guid 1`] = `
 
 exports[`podcast should generate a valid feed locked 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -77,7 +77,7 @@ exports[`podcast should generate a valid feed locked 1`] = `
 
 exports[`podcast should generate a valid feed managingEditor 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -93,7 +93,7 @@ exports[`podcast should generate a valid feed managingEditor 1`] = `
 
 exports[`podcast should generate a valid feed medium music 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -109,7 +109,7 @@ exports[`podcast should generate a valid feed medium music 1`] = `
 
 exports[`podcast should generate a valid feed not locked 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -125,7 +125,7 @@ exports[`podcast should generate a valid feed not locked 1`] = `
 
 exports[`podcast should generate a valid feed person 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -142,7 +142,7 @@ exports[`podcast should generate a valid feed person 1`] = `
 
 exports[`podcast should generate a valid feed webMaster 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -158,7 +158,7 @@ exports[`podcast should generate a valid feed webMaster 1`] = `
 
 exports[`podcast should generate a valid feed with a podcast item 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -204,7 +204,7 @@ exports[`podcast should generate a valid feed with a podcast item 1`] = `
 
 exports[`podcast should generate a valid feed with a podcast item enclosure integrity 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -296,7 +296,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -394,7 +394,7 @@ exports[`podcast should generate a valid feed with a podcast item enclosure inte
 
 exports[`podcast should generate a valid feed with a podcast item explicit 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -422,7 +422,7 @@ exports[`podcast should generate a valid feed with a podcast item explicit 1`] =
 
 exports[`podcast should generate a valid feed with a podcast item guid 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -496,7 +496,7 @@ exports[`podcast should generate a valid feed with a podcast item guid 1`] = `
 
 exports[`podcast should generate a valid feed with a podcast item guid enclosure 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -588,7 +588,7 @@ exports[`podcast should generate a valid feed with a podcast item guid enclosure
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -610,7 +610,7 @@ exports[`podcast should generate a valid feed with a podcast item guid enclosure
 
 exports[`podcast should generate a valid feed with a podcast item images 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -702,7 +702,7 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -738,7 +738,7 @@ exports[`podcast should generate a valid feed with a podcast item images 1`] = `
 
 exports[`podcast should generate a valid feed with a podcast item multiple enclosures 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -830,7 +830,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -895,7 +895,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple enclo
 
 exports[`podcast should generate a valid feed with a podcast item multiple sources 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -987,7 +987,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -1070,7 +1070,7 @@ exports[`podcast should generate a valid feed with a podcast item multiple sourc
 
 exports[`podcast should generate a valid feed with a podcast item person 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -1162,7 +1162,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -1276,7 +1276,7 @@ exports[`podcast should generate a valid feed with a podcast item person 1`] = `
 
 exports[`podcast should generate a valid feed with a podcast item socialInteract 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -1337,7 +1337,7 @@ exports[`podcast should generate a valid feed with a podcast item socialInteract
 
 exports[`podcast should generate a valid feed with a podcast item trackers 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -1429,7 +1429,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -1559,7 +1559,7 @@ exports[`podcast should generate a valid feed with a podcast item trackers 1`] =
 
 exports[`podcast should generate a valid feed with a podcast item transcript 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -1651,7 +1651,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -1700,7 +1700,7 @@ exports[`podcast should generate a valid feed with a podcast item transcript 1`]
 
 exports[`podcast should generate a valid feed with a podcast item with custom tags 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -1792,7 +1792,7 @@ exports[`podcast should generate a valid feed with a podcast item with custom ta
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -1802,7 +1802,7 @@ exports[`podcast should generate a valid feed with a podcast item with custom ta
 
 exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -1928,7 +1928,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -2058,7 +2058,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem 1`] = `
 
 exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -2200,7 +2200,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -2330,7 +2330,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem ended 1`] 
 
 exports[`podcast should generate a valid feed with a podcast liveItem pending 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
@@ -2438,7 +2438,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
             </biz:buzz>
             <biz:buzz>
                 <biz:bar>
-                    <dwarf:fortress><![CDATA[Losing is fun]]></dwarf:fortress>
+                    <biz:dwarfFortress><![CDATA[Losing is fun]]></biz:dwarfFortress>
                 </biz:bar>
             </biz:buzz>
         </item>
@@ -2568,7 +2568,7 @@ exports[`podcast should generate a valid feed with a podcast liveItem pending 1`
 
 exports[`podcast should generate a valid feed with custom channel tags 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"utf-8\\"?>
-<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\">
+<rss version=\\"2.0\\" xmlns:podcast=\\"https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:biz=\\"http://example.com/biz-xmlns\\">
     <channel>
         <title>Feed Title</title>
         <lastBuildDate>Sat, 13 Jul 2013 23:00:00 GMT</lastBuildDate>
