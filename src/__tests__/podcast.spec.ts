@@ -157,6 +157,34 @@ describe("podcast", () => {
     const actual = sampleFeed.podcast()
     expect(actual).toMatchSnapshot()
   })
+  it("should generate a valid feed with stun servers", () => {
+    const sampleFeed = new Feed({
+      title: "Feed Title",
+      copyright: "All rights reserved 2013, John Doe",
+      updated,
+      locked: { isLocked: false, email: "johndoe@example.com" },
+      stunServers: [
+        "stun:stun1.l.google.com:19302",
+        "stun:stunserver.org:3478",
+      ]
+    })
+    const actual = sampleFeed.podcast()
+    expect(actual).toMatchSnapshot()
+  })
+  it("should generate a valid feed with trackers", () => {
+    const sampleFeed = new Feed({
+      title: "Feed Title",
+      copyright: "All rights reserved 2013, John Doe",
+      updated,
+      locked: { isLocked: false, email: "johndoe@example.com" },
+      trackers: [
+        "https://opentracker.i2p.rocks:443/announce",
+        "udp://tracker.opentrackr.org:1337/announce",
+      ]
+    })
+    const actual = sampleFeed.podcast()
+    expect(actual).toMatchSnapshot()
+  })
   it("should generate a valid feed with custom channel tags", () => {
     const sampleFeed = new Feed({
       title: "Feed Title",
@@ -617,6 +645,33 @@ describe("podcast", () => {
           name: "John Smith",
           img: "https://example.com/john-smith.png",
           href: "https://example.com/johnsmith",
+        },
+      ],
+      date: updated,
+      thumbnails: [{ url: "https://example.com/hello-world.png" }],
+      published,
+    })
+    const actual = sampleFeed.podcast()
+    expect(actual).toMatchSnapshot()
+  })
+
+  it("should generate a valid feed with a podcast item stun servers", () => {
+    sampleFeed.addPodcastItem({
+      title: "Hello World",
+      link: "https://example.com/hello-world10",
+      description: "This is an article about Hello World.",
+      stunServers: [
+        "stun:stun.zoiper.com:3478",
+        "stun:stunserver.org:3478",
+      ],
+      media: [
+        {
+          type: "audio/mpeg",
+          length: 12345,
+          sources: [
+            { uri: "https://example.com/hello-world.mp3", },
+            { uri: "https://example.com/hello-world-mp3.torrent", contentType: "application/x-bittorrent" },
+          ],
         },
       ],
       date: updated,
